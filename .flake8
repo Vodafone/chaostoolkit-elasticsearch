@@ -1,0 +1,135 @@
+[flake8]
+# Decrease the verbosity of Flake8’s output. Each time you specify it, it will print less and less information.
+quiet = 0
+
+# Print the total number of errors.
+count = True
+
+# Provide a comma-separated list of glob patterns to exclude from checks.
+exclude = .svn,CVS,.bzr,.hg,.git,__pycache__,.tox,.eggs,*.egg
+
+# Provide a comma-separated list of glob patterns to add to the list
+# of excluded ones. Similar considerations as in --exclude apply here
+# with regard to the value.
+# The difference to the --exclude option is, that this option can be
+# used to selectively add individual patterns without overriding
+# the default list entirely.
+extend-exclude =
+    .venv,
+    modules/chaostoolkit,
+    modules/chaostoolkit-lib
+
+# Provide a comma-separate list of glob patterns to include for checks.
+filename = *.py
+
+# Select the formatter used to display errors to the user.
+#format = %(path)s:%(row)d:%(col)d: %(code)s %(text)s
+format = default
+
+# Toggle whether pycodestyle should enforce matching the indentation
+# of the opening bracket’s line. When you specify this, it will prefer
+# that you hang the closing bracket rather than match the indentation.
+hang-closing = True
+
+# Specify a list of codes to ignore. The list is expected
+# to be comma-separated, and does not need to specify an error code exactly.
+# For example, you can use E, E4, E43, and E431.
+ignore = E121,E123,E126,E226,E24,E704,W503,W504
+
+# Specify a list of codes to add to the list of ignored ones.
+# Similar considerations as in --ignore apply here with regard to the value.
+extend-ignore =
+    W505 # doc line too long
+    E501 # line too long
+    E133 # closing bracket is missing indentation
+
+# Specify a list of mappings of files and the codes that should be ignored
+# for the entirety of the file. This allows for a project to have a default
+# list of violations that should be ignored as well as file-specific violations
+# for files that have not been made compliant with the project rules.
+# This option supports syntax similar to --exclude such that glob patterns will also work here.
+per-file-ignores =
+    # As we are relying on wildcard imports.
+    # F403: unable to detect undefined names (from modules.locust_ext import *)
+    # F405: name may be undefined, or defined from star imports (BaseHttpUser is imported that wildcard import)
+    main_*.py:F403,F405
+    # E501: line too long
+    # E133: closing bracket is missing indentation
+    # F401: imported but unused
+    modules/*:E501,E133,F401
+    test_suites/*:E501
+    unit_tests/*:E501
+
+# Set the maximum length that any line (with some exceptions) may be.
+max-line-length = 120
+
+# Set the maximum length that a comment or docstring line may be.
+max-doc-length = 120
+
+# Set the number of spaces used for indentation.
+indent-size = 4
+
+# Specify the list of error codes you wish Flake8 to report. Similarly to --ignore.
+# This can also be combined with --ignore.
+select = E,F,W,C90
+
+# Specify a list of codes to add to the list of selected ones.
+# Similar considerations as in --select apply here with regard to the value.
+# The difference to the --select option is, that this option can be
+# used to selectively add individual codes without overriding the default list entirely.
+#extend-select =
+#   E4,
+#   E51,
+#   W234
+
+# Report all errors, even if it is on the same line as a # NOQA comment.
+# NOQA can be used to silence messages on specific lines. Sometimes,
+# users will want to see what errors are being silenced without editing
+# the file. This option allows you to see all the warnings, errors, etc. reported.
+disable-noqa = True
+
+# Print the source code generating the error/warning in question.
+show-source = False
+
+# Count the number of occurrences of each error/warning code and print a report.
+statistics = True
+
+# Enable off-by-default extensions.
+# Plugins to Flake8 have the option of registering themselves as off-by-default.
+# These plugins effectively add themselves to the default ignore list.
+#enable-extensions =
+#    H111,
+#    G123
+
+# Specify the number of subprocesses that Flake8 will use to run checks in parallel.
+jobs = auto
+
+# Redirect all output to the specified file.
+#output-file = output.txt
+
+# Also print output to stdout if output-file has been configured.
+#tee = True
+
+# Provide a custom list of builtin functions, objects, names, etc.
+# This allows you to let pyflakes know about builtins that it may not immediately
+# recognize so it does not report warnings for using an undefined name.
+#builtins =
+#    _,
+#    _LE,
+#    _LW
+
+# Enable PyFlakes syntax checking of doctests in docstrings.
+doctests = False
+
+# Specify which files are checked by PyFlakes for doctest syntax.
+#include-in-doctest =
+#    dir/subdir/file.py,
+#    dir/other/file.py
+
+# Specify which files are not to be checked by PyFlakes for doctest syntax.
+#exclude-from-doctest =
+#    dir/subdir/file.py,
+#    dir/other/file.py
+
+# Set the maximum allowed McCabe complexity value for a block of code.
+max-complexity = 10
