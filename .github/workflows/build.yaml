@@ -42,7 +42,7 @@ jobs:
       - name: Build package
         run: |
           python3 setup.py bdist_wheel;
-          python3 -m pip install dist/chaostoolkit_locust-0.0.1-py3-none-any.whl
+          python3 -m pip install dist/chaostoolkit_elasticsearch-0.0.1-py3-none-any.whl
       - name: Run unit test
         run: |
           pytest ./tests
