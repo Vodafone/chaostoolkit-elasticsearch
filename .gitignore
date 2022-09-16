@@ -133,7 +133,6 @@ venv.bak/
 # Build artefacts
 deps/
 resolved/
-requirements.txt
 
 # Devcontainers environment files
 .devcontainer/*.env
