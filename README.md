@@ -4,9 +4,4 @@ chaostoolkit-elasticsearch
 Chaostoolkit-elasticsearch module provide elasticsearch reporting and status query capability to Chaostoolkit.
 
 ### Install python dependencies
-We use `pipenv` to manage project dependencies, first navigate to the project root and run the following command:
-
-```bash
-pipenv install --dev
-```
- 
+python3 -m pip install -r requirements.txt
