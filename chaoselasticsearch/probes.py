@@ -8,7 +8,7 @@ __all__ = [
 ]
 
 
-def is_elasticsearch_running(configuration: Configuration = None):
+def is_elasticsearch_running(configuration: Configuration = None) -> bool:
     es_configuration = configuration.get("elasticsearch")
     host = es_configuration.get("host")
     port = es_configuration.get("port")
